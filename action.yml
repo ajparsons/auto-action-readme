@@ -1,17 +1,17 @@
 name: 'Auto-Action-Readme'
 version: 0.1.0
-description: 'Github Action to use the default in action.yml to populate the readme.'
+description: 'Github Action to use the settings in action.yml to populate the readme.'
 inputs:
   output_file:
-    description: "Output file name (default READMD.md)"
+    description: "Output file name (default READMD.md)."
     default: 'README.md'
   commit_and_push:
-    description: "Push back inside this action (default true)"
+    description: "Push back changes made to Github.".
     default: 'true'
 
 outputs:
   changes_detected:
-    description: "Boolean on if there were changes committed"
+    description: "Boolean if there were changes committed. Will be none if 'commit_and_push' was false."
     value: ${{ steps.push-new-data.outputs.changes_detected }}
 
 runs:

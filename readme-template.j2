@@ -17,8 +17,8 @@ Author: {{author}}
 ```yaml
 
 - uses: {{ env("GITHUB_REPOSITORY") }}@{% if version is defined %}v{{version}}{% else %}main{% endif %}
-    id: example-step {% if inputs %}
-    with:{% for key, value in inputs.items() %}
+  id: example-step {% if inputs %}
+  with:{% for key, value in inputs.items() %}
         {{ key }}: '{{ value.get('default', '') }}' {% if value.get('required') == 'true' %} # required {% endif%}{% endfor %}{% endif %}
 
 ```
@@ -28,9 +28,11 @@ Author: {{author}}
 {% for key, value in inputs.items() %}
 ### {{key}}
 
+{% if value.get('required') == true %}Required.{% endif %}
+
 {{value.description}}
+
 {% if value.get('default') %}Default: {{ value.default }}{% endif %}
-{% if value.get('required') == true %}Required{% endif %}
 
 {% endfor %}
 {% endif %}
