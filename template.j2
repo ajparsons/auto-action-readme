@@ -1,0 +1,23 @@
+# {{name}}
+
+{{description}}
+
+{% if inputs %}
+## Inputs
+{% for key, value in inputs.items() %}
+### {{key}}
+
+{{value.description}}
+{% if value.default %}Default: {{ value.default }}{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if outputs %}
+## Outputs
+{% for key, value in outputs.items() %}
+### {{key}}
+
+{{value.description}}
+
+{% endfor %}
+{% endif %}

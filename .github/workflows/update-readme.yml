@@ -1,0 +1,24 @@
+# Update readme from action.yml
+name: "Update readme"
+
+# don't allow multiple 'identical' processes to run. A second push should cancel the job from the first one.
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}-${{ github.event.inputs.pypi }}-${{ github.event.inputs.testpypi }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+
+  update-tag:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+      
+      - uses: ajparsons/auto-action-readme@main
+        with:
+          output_file: README.md

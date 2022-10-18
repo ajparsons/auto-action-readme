@@ -1,0 +1,43 @@
+name: 'Auto-Action-Readme'
+version: 0.1.0
+description: 'Github Action to use the default in action.yml to populate the readme.'
+inputs:
+  output_file:
+    description: "Output file name (default READMD.md)"
+    default: 'README.md'
+  commit_and_push:
+    description: "Push back inside this action (default true)"
+    default: 'true'
+
+outputs:
+  changes_detected:
+    description: "Boolean on if there were changes committed"
+    value: ${{ steps.push-new-data.outputs.changes_detected }}
+
+runs:
+  using: "composite"
+  steps:
+
+    - uses: ajparsons/cache-requirements-txt@main
+      id: cache-env
+      with:
+        requirements_path: "${{ github.action_path }}/requirements.xt" 
+        cache_key: 'update-readme'
+        venv_path: /tmp/auto-action-venv/
+        python_version: "3.10"
+
+    - name: Render readme
+      id: render_readme
+      shell: bash
+      run: |
+        source /tmp/auto-action-venv/bin/activate
+        j2 ${{ github.action_path }}/template.j2 action.yml > $OUTPUT_FILE
+      env:
+        OUTPUT_FILE: ${{ inputs.output_file }}
+
+    - name: Push new data
+      id: push-new-data
+      if: ${{ inputs.commit_and_push == 'true' }}
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Updated readme from action.yml"
