@@ -21,7 +21,7 @@ runs:
     - uses: ajparsons/cache-requirements-txt@main
       id: cache-env
       with:
-        requirements_path: "${{ github.action_path }}/requirements.xt" 
+        requirements_path: "${{ github.action_path }}/requirements.txt" 
         cache_key: 'update-readme'
         venv_path: /tmp/auto-action-venv/
         python_version: "3.10"
