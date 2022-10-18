@@ -14,11 +14,10 @@ Github Action to use the default in action.yml to populate the readme.
 
 ```yaml
 
-- uses: @v0.1.0
+- uses: ajparsons/auto-action-readme@v0.1.0
     id: example-step 
     with:
         output_file: 'README.md' 
-        package_name: 'None' 
         commit_and_push: 'true' 
 
 ```
@@ -31,13 +30,6 @@ Github Action to use the default in action.yml to populate the readme.
 Output file name (default READMD.md)
 Default: README.md
 
-
-
-### package_name
-
-Location of the package (user/repo)
-
-Required
 
 
 ### commit_and_push
