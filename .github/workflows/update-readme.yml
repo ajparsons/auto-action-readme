@@ -34,5 +34,5 @@ jobs:
 
       - uses: ajparsons/auto-action-readme@main
         with:
-          tag: ${{ steps.tags.major_tag }}
+          tag: ${{ steps.tags.outputs.major_tag }}
           output_file: README.md
