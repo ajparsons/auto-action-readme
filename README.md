@@ -14,11 +14,12 @@ Github Action to use the settings in action.yml to populate the readme.
 
 ```yaml
 
-- uses: ajparsons/auto-action-readme@v0.1.0
+- uses: ajparsons/auto-action-readme@
   id: example-step 
   with:
     output_file: 'README.md' 
     commit_and_push: 'true' 
+    tag: 'main' 
 
 ```
 
@@ -41,6 +42,15 @@ Default: README.md
 Push back changes made to Github.
 
 Default: true
+
+
+### tag
+
+
+
+Tag or branch to use in example
+
+Default: main
 
 
 
