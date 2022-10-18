@@ -6,7 +6,7 @@ inputs:
     description: "Output file name (default READMD.md)."
     default: 'README.md'
   commit_and_push:
-    description: "Push back changes made to Github.".
+    description: "Push back changes made to Github."
     default: 'true'
 
 outputs:
