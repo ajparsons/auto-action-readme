@@ -17,8 +17,8 @@ Github Action to use the settings in action.yml to populate the readme.
 - uses: ajparsons/auto-action-readme@v0.1.0
   id: example-step 
   with:
-        output_file: 'README.md' 
-        commit_and_push: 'true' 
+    output_file: 'README.md' 
+    commit_and_push: 'true' 
 
 ```
 
