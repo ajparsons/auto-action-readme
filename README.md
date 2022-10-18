@@ -14,7 +14,7 @@ Github Action to use the settings in action.yml to populate the readme.
 
 ```yaml
 
-- uses: ajparsons/auto-action-readme@v{major}
+- uses: ajparsons/auto-action-readme@v0
   id: example-step 
   with:
     output_file: 'README.md' 
