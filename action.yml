@@ -5,6 +5,9 @@ inputs:
   output_file:
     description: "Output file name (default READMD.md)"
     default: 'README.md'
+  package_name:
+    description: "Location of the package (user/repo)"
+    required: true
   commit_and_push:
     description: "Push back inside this action (default true)"
     default: 'true'
@@ -31,9 +34,10 @@ runs:
       shell: bash
       run: |
         source /tmp/auto-action-venv/bin/activate
-        j2 ${{ github.action_path }}/template.j2 action.yml > $OUTPUT_FILE
+        j2 ${{ github.action_path }}/readme-template.j2 action.yml > $OUTPUT_FILE
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
+        PACKAGE_NAME: ${{ inputs.package_name }}
 
     - name: Push new data
       id: push-new-data

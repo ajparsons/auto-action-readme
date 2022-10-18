@@ -1,0 +1,45 @@
+# {{name}}
+
+{% if version is defined %}
+Version: {{version}}
+{% endif %}
+
+{% if author is defined %}
+Author: {{author}}
+{% endif %}
+
+{% if description is defined %}
+{{description}}
+{% endif %}
+
+## Usage
+
+```yaml
+
+- uses: {{ env("PACKAGE_NAME") }}@{% if version is defined %}v{{version}}{% else %}main{% endif %}
+    id: example-step {% if inputs %}
+    with:{% for key, value in inputs.items() %}
+        {{ key }}: '{{ value.get('default') }}' {% if value.get('required') == 'true' %} # required {% endif%}{% endfor %}{% endif %}
+
+```
+
+{% if inputs is defined %}
+## Inputs
+{% for key, value in inputs.items() %}
+### {{key}}
+
+{{value.description}}
+{% if value.get('default') %}Default: {{ value.default }}{% endif %}
+{% if value.get('required') == true %}Required{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if outputs is defined %}
+## Outputs
+{% for key, value in outputs.items() %}
+### {{key}}
+
+{{value.description}}
+
+{% endfor %}
+{% endif %}

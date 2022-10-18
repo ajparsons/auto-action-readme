@@ -18,7 +18,8 @@ jobs:
     steps:
 
       - uses: actions/checkout@v3
-      
+
       - uses: ajparsons/auto-action-readme@main
         with:
           output_file: README.md
+          package_name: ${{ github.GITHUB_REPOSITORY }}
