@@ -16,7 +16,7 @@ Author: {{author}}
 
 ```yaml
 
-- uses: {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG"} }}
+- uses: {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG") }}
   id: example-step {% if inputs %}
   with:{% for key, value in inputs.items() %}
     {{ key }}: '{{ value.get('default', '') }}' {% if value.get('required') == 'true' %} # required {% endif%}{% endfor %}{% endif %}
