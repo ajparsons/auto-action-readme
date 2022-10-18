@@ -11,12 +11,18 @@ Output file name (default READMD.md)
 Default: README.md
 
 
+### commit_and_push
+
+Push back inside this action (default true)
+Default: true
+
+
 
 
 ## Outputs
 
-### semver_tags
+### changes_detected
 
-Space seperated semver tags
+Boolean on if there were changes committed
 
 
