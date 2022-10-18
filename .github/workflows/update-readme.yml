@@ -22,4 +22,3 @@ jobs:
       - uses: ajparsons/auto-action-readme@main
         with:
           output_file: README.md
-          package_name: ${{ github.GITHUB_REPOSITORY }}

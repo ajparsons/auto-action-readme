@@ -16,10 +16,10 @@ Author: {{author}}
 
 ```yaml
 
-- uses: {{ env("PACKAGE_NAME") }}@{% if version is defined %}v{{version}}{% else %}main{% endif %}
+- uses: {{ env("GITHUB_REPOSITORY") }}@{% if version is defined %}v{{version}}{% else %}main{% endif %}
     id: example-step {% if inputs %}
     with:{% for key, value in inputs.items() %}
-        {{ key }}: '{{ value.get('default') }}' {% if value.get('required') == 'true' %} # required {% endif%}{% endfor %}{% endif %}
+        {{ key }}: '{{ value.get('default', '') }}' {% if value.get('required') == 'true' %} # required {% endif%}{% endfor %}{% endif %}
 
 ```
 
