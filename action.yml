@@ -8,6 +8,9 @@ inputs:
   commit_and_push:
     description: "Push back changes made to Github."
     default: 'true'
+  tag:
+    description: 'Tag or branch to use in example'
+    default: 'main'
 
 outputs:
   changes_detected:
@@ -34,6 +37,7 @@ runs:
         j2 ${{ github.action_path }}/readme-template.j2 action.yml > $OUTPUT_FILE
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
+        TAG: ${{ inputs.tag }}
 
     - name: Push new data
       id: push-new-data
