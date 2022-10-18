@@ -7,7 +7,7 @@ Version: 0.1.0
 
 
 
-Github Action to use the default in action.yml to populate the readme.
+Github Action to use the settings in action.yml to populate the readme.
 
 
 ## Usage
@@ -15,8 +15,8 @@ Github Action to use the default in action.yml to populate the readme.
 ```yaml
 
 - uses: ajparsons/auto-action-readme@v0.1.0
-    id: example-step 
-    with:
+  id: example-step 
+  with:
         output_file: 'README.md' 
         commit_and_push: 'true' 
 
@@ -27,16 +27,20 @@ Github Action to use the default in action.yml to populate the readme.
 
 ### output_file
 
-Output file name (default READMD.md)
-Default: README.md
 
+
+Output file name (default READMD.md).
+
+Default: README.md
 
 
 ### commit_and_push
 
-Push back inside this action (default true)
-Default: true
 
+
+Push back changes made to Github.
+
+Default: true
 
 
 
@@ -45,6 +49,6 @@ Default: true
 
 ### changes_detected
 
-Boolean on if there were changes committed
+Boolean if there were changes committed. Will be none if 'commit_and_push' was false.
 
 
