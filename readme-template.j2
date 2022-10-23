@@ -16,10 +16,11 @@ Author: {{author}}
 
 ```yaml
 
-- uses: {{ env("GITHUB_REPOSITORY") }}@{{env("GITHUB_SHA")}} # If you trust this source, use @{{ env("TAG") }}
+- uses: {{ env("GITHUB_REPOSITORY") }}@{{env("GITHUB_SHA")}}
+# If you trust this source, use {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG") }}
   id: example-step {% if inputs %}
   with:{% for key, value in inputs.items() %}
-    {{ key }}: '{{ value.get('default', '') }}' {% if value.get('default') %} # default value{% endif %}{% if value.get('required') == 'true' %} # required {% endif %}{% endfor %}{% endif %}
+    {{ key }}: '{{ value.get('default', '') }}' {% if value.get('default') %} # default{% endif %}{% if value.get('required') == 'true' %} # required {% endif %}{% endfor %}{% endif %}
 
 ```
 
