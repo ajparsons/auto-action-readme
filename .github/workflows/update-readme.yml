@@ -36,7 +36,7 @@ jobs:
 
       - uses: ajparsons/auto-action-readme@main
         with:
-          tags: ${{ steps.tags.outputs.major_tag }}
+          tag: ${{ steps.tags.outputs.major_tag }}
           output_file: README.md
 
         # if this is the first time this version has been created, do a release
