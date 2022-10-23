@@ -1,5 +1,5 @@
 name: 'Auto-Action-Readme'
-version: 0.1.5
+version: 0.1.6
 description: 'Github Action to use the settings in action.yml to populate the readme.'
 inputs:
   output_file:
