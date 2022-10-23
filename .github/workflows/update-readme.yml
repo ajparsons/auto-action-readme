@@ -48,10 +48,11 @@ jobs:
 
         # if this is the first time this version has been created, do a release
       - name: Release version
-        if: ${{ steps.update_tags.outputs.tag_exists == 'false' }}
+        # if: ${{ steps.update_tags.outputs.tag_exists == 'false' }}
         shell: bash
         run: |
           gh release create $TAG --title $TAG
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.update_tags.outputs.patch_tag }}
           
