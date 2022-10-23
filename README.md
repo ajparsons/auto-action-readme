@@ -10,7 +10,7 @@ Github Action to use the settings in action.yml to populate the readme.
 
 ```yaml
 
-- uses: ajparsons/auto-action-readme@29c9f371ab2e97a4ec035e568a4883d71db9efe3
+- uses: ajparsons/auto-action-readme@4d62328a72a8b0b0453f6a446d16c83ac06bb277
 # If you trust this source, use ajparsons/auto-action-readme@v0
   id: example-step 
   with:
