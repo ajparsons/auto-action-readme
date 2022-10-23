@@ -27,10 +27,10 @@ jobs:
           file: 'action.yml'
           key: 'version'
 
-      #- uses: ajparsons/auto-action-readme@main
-      #  with:
-      #    tag: ${{ steps.tags.outputs.major_tag }}
-      #    output_file: README.md
+      - uses: ajparsons/auto-action-readme@main
+        with:
+          tag: ${{ steps.tags.outputs.major_tag }}
+          output_file: README.md
 
       - name: Update git tags
         id: update_tags
@@ -44,11 +44,11 @@ jobs:
         run: |
           echo "$TAG"
         env:
-          TAG: ${{ steps.update_tags.outputs.tag_exist }}
+          TAG: ${{ steps.update_tags.outputs.tag_exists }}
 
         # if this is the first time this version has been created, do a release
       - name: Release version
-        if: ${{ steps.tags.outputs.tag_exist == 'false' }}
+        if: ${{ steps.tags.outputs.tag_exists == 'false' }}
         shell: bash
         run: |
           gh release create $TAG --title $TAG
