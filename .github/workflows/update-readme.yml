@@ -39,9 +39,14 @@ jobs:
           tag: ${{ steps.tags.outputs.major_tag }}
           output_file: README.md
 
+      - shell: bash
+        name: debug step
+        run: |
+          echo "${{ steps.tags.outputs.tag_exist == 'false' }}"
+
         # if this is the first time this version has been created, do a release
       - name: Release version
-        if: ${{ steps.tags.outputs.tags_exist == 'false' }}
+        if: ${{ steps.tags.outputs.tag_exist == 'false' }}
         shell: bash
         run: |
           gh release create $TAG --title $TAG
