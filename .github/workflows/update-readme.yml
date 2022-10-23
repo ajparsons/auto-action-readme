@@ -36,5 +36,15 @@ jobs:
 
       - uses: ajparsons/auto-action-readme@main
         with:
-          tag: ${{ steps.tags.outputs.major_tag }}
+          tags: ${{ steps.tags.outputs.major_tag }}
           output_file: README.md
+
+        # if this is the first time this version has been created, do a release
+      - name: Release version
+        if: ${{ steps.tags.outputs.tags_exist == 'false' }}
+        shell: bash
+        run: |
+          gh release create $TAG --title $TAG
+        env:
+          TAG: ${{ steps.tags.outputs.patch_tag }}
+          
