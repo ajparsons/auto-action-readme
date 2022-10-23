@@ -27,6 +27,11 @@ jobs:
           file: 'action.yml'
           key: 'version'
 
+      - uses: ajparsons/auto-action-readme@main
+        with:
+          tag: ${{ steps.tags.outputs.major_tag }}
+          output_file: README.md
+
       - name: Update git tags
         id: tags
         uses: ajparsons/semver-to-tag@main
@@ -34,13 +39,8 @@ jobs:
           semver: ${{ steps.get_version.outputs.value }}
           update_tags: true
 
-      - uses: ajparsons/auto-action-readme@main
-        with:
-          tag: ${{ steps.tags.outputs.major_tag }}
-          output_file: README.md
-
-      - shell: bash
-        name: debug step
+      - name: debug step 
+        shell: bash
         run: |
           echo "$TAG"
         env:
