@@ -42,7 +42,7 @@ jobs:
       - shell: bash
         name: debug step
         run: |
-          echo "${{ steps.tags.outputs.tag_exist == 'false' }}"
+          echo "${{ steps.tags.outputs.tag_exist }}"
 
         # if this is the first time this version has been created, do a release
       - name: Release version
