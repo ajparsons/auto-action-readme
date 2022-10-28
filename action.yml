@@ -31,13 +31,17 @@ runs:
         cd "$CURRENT_ACTION_PATH"
         CURRENT_VERSION="${PWD##*/}"
         cd ..
-        echo "$PWD"
+        CURRENT_ACTION_NAME="${PWD##*/}"
+        cd ..
+        CURRENT_ACTION_USER="${PWD##*/}"
+
+        CA="$CURRENT_ACTION_NAME/$CURRENT_ACTION_NAME"
 
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
           echo "This is fine."
         else
-          echo "::warning title=Pin $CURRENT_ACTION::For safety, replace $CURRENT_ACTION@CURRENT_VERSION with $CURRENT_ACTION@$SHORT_SHA #$CURRENT_VERSION"
+          echo "::warning title=Pin $CA::For safety, replace $CA@$CURRENT_VERSION with $CA@$SHORT_SHA #$CURRENT_VERSION"
         fi
 
         
