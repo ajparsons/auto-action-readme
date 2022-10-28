@@ -23,7 +23,7 @@ runs:
 
     - name: Self warning
       shell: bash
-      run |
+      run: |
         echo "${CURRENT_ACTION_PATH##*/}"
         echo "::warning title=Pin Action::Test of warning message"
       env: 
