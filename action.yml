@@ -34,7 +34,10 @@ runs:
         CURRENT_ACTION_NAME="${PWD##*/}"
         cd ..
         CURRENT_ACTION_USER="${PWD##*/}"
-        echo "$TRUST_AJPARSONS"
+        # No trust problems if same owner as current repo
+        if [[ "$GITHUB_REPOSITORY_OWNER" == "$CURRENT_ACTION_USER"]]; then
+          exit 0
+        fi
         CA="$CURRENT_ACTION_NAME/$CURRENT_ACTION_NAME"
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
