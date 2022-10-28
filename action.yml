@@ -36,12 +36,11 @@ runs:
         CURRENT_ACTION_USER="${PWD##*/}"
 
         CA="$CURRENT_ACTION_NAME/$CURRENT_ACTION_NAME"
-        NL=$'\n'
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
           echo "This is fine."
         else
-          echo "::warning title=Pin $CA::For safety, replace:$NL$CA@$CURRENT_VERSION with $CA@$SHORT_SHA #$CURRENT_VERSION"
+          echo "::warning title=Pin $CA::For safety, replace:$CA@$CURRENT_VERSION with $CA@$SHORT_SHA #$CURRENT_VERSION"
         fi
 
         
