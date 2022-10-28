@@ -21,6 +21,14 @@ runs:
   using: "composite"
   steps:
 
+    - name: Self warning
+      shell: bash
+      run |
+        echo "${CURRENT_ACTION_PATH##*/}"
+        echo "::warning title=Pin Action::Test of warning message"
+      env: 
+        CURRENT_ACTION_PATH: ${{ github.action_path }}
+
     - uses: ajparsons/cache-requirements-txt@main
       id: cache-env
       with:
