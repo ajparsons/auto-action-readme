@@ -10,8 +10,8 @@
 
 ```yaml
 
-- uses: {{ env("GITHUB_REPOSITORY") }}@{{env("GITHUB_SHA")}}
-# If you trust this source, use {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG") }}
+# It is better practice to use the SHA hash of this tag rather than the tag itself.
+- uses: {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG") }}
   id: example-step {% if inputs %}
   with:{% for key, value in inputs.items() %}
     {{ key }}: '{{ value.get('default', '') }}' {% if value.get('default') %} # default{% endif %}{% if value.get('required') == 'true' %} # required {% endif %}{% endfor %}{% endif %}
