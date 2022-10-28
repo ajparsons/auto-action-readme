@@ -25,8 +25,8 @@ runs:
       shell: bash
       run: |
         CURRENT_VERSION="${CURRENT_ACTION_PATH##*/}"
-        CURRENT_SHA=${git log -1 --format="%H"}
-        SHORT_SHA=${git log -1 --format="%h"}
+        CURRENT_SHA=$(git log -1 --format="%H")
+        SHORT_SHA=$(git log -1 --format="%h")
 
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
