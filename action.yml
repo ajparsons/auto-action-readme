@@ -42,8 +42,6 @@ runs:
         else
           echo "::warning title=Pin $CA::For safety, replace:$CA@$CURRENT_VERSION with $CA@$SHORT_SHA #$CURRENT_VERSION"
         fi
-
-        
       env: 
         CURRENT_ACTION_PATH: ${{ github.action_path }}
 
