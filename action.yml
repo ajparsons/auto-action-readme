@@ -39,7 +39,7 @@ runs:
         ## then
         ##  exit 0
         ## fi
-        CA="$CURRENT_ACTION_NAME/$CURRENT_ACTION_NAME"
+        CA="$CURRENT_ACTION_USER/$CURRENT_ACTION_NAME"
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
           :
