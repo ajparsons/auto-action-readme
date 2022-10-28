@@ -44,7 +44,7 @@ runs:
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
           :
         else
-          echo "::warning title=Pin $CA::For security, replace: '$CA@$CURRENT_VERSION' with '$CA@$SHORT_SHA #$CURRENT_VERSION'"
+          echo "::warning title=Pin $CA::For security, replace: '$CA@$CURRENT_VERSION' with '$CA@$CURRENT_SHA #$CURRENT_VERSION'"
         fi
       env: 
         CURRENT_ACTION_PATH: ${{ github.action_path }}
