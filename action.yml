@@ -24,12 +24,14 @@ runs:
     - name: Self warning
       shell: bash
       run: |
+
+        CURRENT_SHA=$(git log -1 --format="%H")
+        SHORT_SHA=$(git log -1 --format="%h")
+
         cd "$CURRENT_ACTION_PATH"
         CURRENT_VERSION="${PWD##*/}"
         cd ..
         echo "$PWD"
-        CURRENT_SHA=$(git log -1 --format="%H")
-        SHORT_SHA=$(git log -1 --format="%h")
 
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
