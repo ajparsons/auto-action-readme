@@ -14,6 +14,8 @@ on:
 jobs:
 
   update-action-meta:
+    env:
+      TRUST_AJPARSONS: true
     runs-on: ubuntu-latest
     steps:
 

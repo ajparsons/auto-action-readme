@@ -34,7 +34,7 @@ runs:
         CURRENT_ACTION_NAME="${PWD##*/}"
         cd ..
         CURRENT_ACTION_USER="${PWD##*/}"
-
+        echo "$TRUST_AJPARSONS"
         CA="$CURRENT_ACTION_NAME/$CURRENT_ACTION_NAME"
         # if this already uses a pin no problem!
         if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
