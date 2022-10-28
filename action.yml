@@ -24,9 +24,20 @@ runs:
     - name: Self warning
       shell: bash
       run: |
-        echo "${CURRENT_ACTION_PATH##*/}"
-        echo "::warning title=Pin Action::Test of warning message"
+        CURRENT_VERSION="${CURRENT_ACTION_PATH##*/}"
+        CURRENT_SHA=${git log -1 --format="%H"}
+        SHORT_SHA=${git log -1 --format="%h"}
+
+        # if this already uses a pin no problem!
+        if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
+          echo "This is fine."
+        else
+          echo "::warning title=Pin $CURRENT_ACTION::For safety, replace $CURRENT_ACTION@CURRENT_VERSION with $CURRENT_ACTION@SHORT_SHA #CURRENT_VERSION"
+        fi
+
+        
       env: 
+        CURRENT_ACTION: ${{ github.action }}
         CURRENT_ACTION_PATH: ${{ github.action_path }}
 
     - uses: ajparsons/cache-requirements-txt@main
