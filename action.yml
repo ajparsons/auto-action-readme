@@ -22,32 +22,9 @@ runs:
   steps:
 
     - name: Self warning
-      shell: bash
-      run: |
-
-        CURRENT_SHA=$(git log -1 --format="%H")
-        SHORT_SHA=$(git log -1 --format="%h")
-
-        cd "$CURRENT_ACTION_PATH"
-        CURRENT_VERSION="${PWD##*/}"
-        cd ..
-        CURRENT_ACTION_NAME="${PWD##*/}"
-        cd ..
-        CURRENT_ACTION_USER="${PWD##*/}"
-        #  No trust problems if same owner as current repo
-        ## if [[ "$GITHUB_REPOSITORY_OWNER" == "$CURRENT_ACTION_USER" ]]
-        ## then
-        ##  exit 0
-        ## fi
-        CA="$CURRENT_ACTION_USER/$CURRENT_ACTION_NAME"
-        # if this already uses a pin no problem!
-        if [[ $CURRENT_VERSION = @(CURRENT_SHA|SHORT_SHA) ]]; then
-          :
-        else
-          echo "::warning title=Pin $CA::For security, replace: '$CA@$CURRENT_VERSION' with '$CA@$CURRENT_SHA #$CURRENT_VERSION'"
-        fi
-      env: 
-        CURRENT_ACTION_PATH: ${{ github.action_path }}
+      uses: ajparsons/sha-version-warning@main
+      with: 
+        action_path: ${{ github.action_path }}
 
     - uses: ajparsons/cache-requirements-txt@main
       id: cache-env
