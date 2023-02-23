@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: ajparsons/get-yaml-value@main
+      - uses: ajparsons/get-yaml-value@ee67a25090c05dae8a979c933a64b5ffbc1a55e7
         id: get_version
         with:
           file: 'action.yml'
@@ -29,7 +29,7 @@ jobs:
 
       - name: Update git tags
         id: update_tags
-        uses: ajparsons/semver-to-tag@main
+        uses: ajparsons/semver-to-tag@7705485fc6c01cb6bd4beea9837ede08d3e88594
         with:
           semver: ${{ steps.get_version.outputs.value }}
           update_tags: true
@@ -38,6 +38,7 @@ jobs:
         with:
           tag: ${{ steps.update_tags.outputs.major_tag }}
           output_file: README.md
+          commit_and_push: true
 
         # if this is the first time this version has been created, do a release
       - name: Release version
@@ -48,4 +49,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.update_tags.outputs.patch_tag }}
-          
