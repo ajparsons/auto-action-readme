@@ -1,5 +1,5 @@
 name: 'Auto-Action-Readme'
-version: 0.1.7
+version: 1.0.0
 description: 'Github Action to use the settings in action.yml to populate the readme.'
 inputs:
   output_file:
@@ -22,7 +22,7 @@ runs:
   steps:
 
     - name: Self warning
-      uses: ajparsons/sha-version-warning@3bf9d42078fa317ac4e17045ffb2504b31859e03
+      uses: ajparsons/sha-version-warning@53c5e9cbf96afb276cb2cf486ebd45c5d5db0e11 #v1.0.1
       with: 
         action_path: ${{ github.action_path }}
 
