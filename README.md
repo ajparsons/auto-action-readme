@@ -1,6 +1,6 @@
 # Auto-Action-Readme
 
-Version: 0.1.7
+Version: 1.0.0
 
 
 
@@ -11,7 +11,7 @@ Github Action to use the settings in action.yml to populate the readme.
 ```yaml
 
 # It is better practice to use the SHA hash of this tag rather than the tag itself.
-- uses: ajparsons/auto-action-readme@v0
+- uses: ajparsons/auto-action-readme@v1
   id: example-step 
   with:
     output_file: 'README.md'  # default
