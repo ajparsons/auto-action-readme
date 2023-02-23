@@ -43,10 +43,3 @@ runs:
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
         TAG: ${{ inputs.tag }}
-
-    - name: Push new data
-      id: push-new-data
-      if: ${{ inputs.commit_and_push == 'true' }}
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Updated readme from action.yml"
