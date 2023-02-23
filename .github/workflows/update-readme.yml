@@ -1,6 +1,10 @@
 # Update readme from action.yml
 name: "Update readme"
 
+permissions:
+  contents: write
+  packages: write
+
 # don't allow multiple 'identical' processes to run. A second push should cancel the job from the first one.
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}-${{ github.event.inputs.pypi }}-${{ github.event.inputs.testpypi }}
