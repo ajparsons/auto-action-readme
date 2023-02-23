@@ -22,11 +22,11 @@ runs:
   steps:
 
     - name: Self warning
-      uses: ajparsons/sha-version-warning@main
+      uses: ajparsons/sha-version-warning@3bf9d42078fa317ac4e17045ffb2504b31859e03
       with: 
         action_path: ${{ github.action_path }}
 
-    - uses: ajparsons/cache-requirements-txt@main
+    - uses: ajparsons/cache-requirements-txt@f571ce408250d750c93659db28dd37f9272ce0a4
       id: cache-env
       with:
         requirements_path: "${{ github.action_path }}/requirements.txt" 
