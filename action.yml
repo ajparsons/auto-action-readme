@@ -52,7 +52,7 @@ runs:
         p = Path(os.environ["OUTPUT_FILE"])
         t = p.read_text()
         while "\n\n" in t:
-          t = t.replace("\n\n", "\n")
+          t = t.replace("\n\n\n", "\n\n")
         p.write_text(t)
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
