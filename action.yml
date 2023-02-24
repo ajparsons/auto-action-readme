@@ -51,7 +51,7 @@ runs:
         from pathlib import Path
         p = Path(os.environ["OUTPUT_FILE"])
         t = p.read_text()
-        while "\n\n" in t:
+        while "\n\n\n" in t:
           t = t.replace("\n\n\n", "\n\n")
         p.write_text(t)
       env:
