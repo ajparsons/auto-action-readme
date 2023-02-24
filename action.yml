@@ -44,6 +44,18 @@ runs:
         OUTPUT_FILE: ${{ inputs.output_file }}
         TAG: ${{ inputs.tag }}
 
+    - name: Remove double lines
+      shell: python
+      run: |
+        import os
+        from pathlib import Path
+        p = Path(os.environ["OUTPUT_FILE"])
+        t = p.read_text()
+        while "\n\n" in t:
+          t = t.replace("\n\n", "\n")
+        p.write_text(t)
+      env:
+        OUTPUT_FILE: ${{ inputs.output_file }}
 
     - name: Push new data
       id: push-new-data
