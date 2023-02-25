@@ -1,5 +1,5 @@
 name: 'Auto-Action-Readme'
-version: 1.0.1
+version: 1.0.2
 description: 'Github Action to use the settings in action.yml to populate the readme.'
 inputs:
   output_file:
@@ -39,7 +39,7 @@ runs:
       shell: bash
       run: |
         source /tmp/auto-action-venv/bin/activate
-        j2 ${{ github.action_path }}/readme-template.j2 action.yml > $OUTPUT_FILE
+        j2 ${{ github.action_path }}/readme-template.j2 action.yml --undefined > $OUTPUT_FILE
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
         TAG: ${{ inputs.tag }}
