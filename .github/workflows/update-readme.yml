@@ -33,7 +33,7 @@ jobs:
 
       - name: Update git tags
         id: update_tags
-        uses: ajparsons/semver-to-tag@7705485fc6c01cb6bd4beea9837ede08d3e88594
+        uses: ajparsons/semver-to-tag@685b3e41a5be3f5797d88ac8fc6843748421e3db
         with:
           semver: ${{ steps.get_version.outputs.value }}
           update_tags: true
