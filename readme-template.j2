@@ -10,7 +10,7 @@
 
 ```yaml
 
-- uses: {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG") }} # env("COMMENT")
+- uses: {{ env("GITHUB_REPOSITORY") }}@{{ env("TAG") }} # {{ env("COMMENT") }}
   id: example-step {% if inputs %}
   with:{% for key, value in inputs.items() %}
     {{ key }}: '{{ value.get('default', '') }}' {% if value.get('default') %} # default{% endif %}{% if value.get('required') == 'true' %} # required {% endif %}{% endfor %}{% endif %}
