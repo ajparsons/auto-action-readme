@@ -57,9 +57,9 @@ jobs:
           TAG: ${{ steps.update_tags.outputs.patch_tag }}
 
       - uses: ajparsons/auto-action-readme@main
-        if: ${{ first-round-readme.outputs.changes_detected }}
+        if: ${{ steps.first-round-readme.outputs.changes_detected }}
         with:
-          tag: ${{ first-round-readme.outputs.commit_hash }}
+          tag: ${{ steps.first-round-readme.outputs.commit_hash }}
           comment: ${{ steps.update_tags.outputs.patch_tag }}
           output_file: README.md
           commit_and_push: true
