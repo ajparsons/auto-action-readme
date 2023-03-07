@@ -32,7 +32,7 @@ runs:
       with: 
         action_path: ${{ github.action_path }}
 
-    - uses: ajparsons/cache-requirements-txt@f571ce408250d750c93659db28dd37f9272ce0a4
+    - uses: ajparsons/cache-requirements-txt@47418e65d909c8ab0b403a7c1f6471f14568e75d
       id: cache-env
       with:
         requirements_path: "${{ github.action_path }}/requirements.txt" 
