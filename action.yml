@@ -11,18 +11,24 @@ inputs:
   tag:
     description: 'Tag or branch to use in example'
     default: 'main'
+  comment:
+    description: 'Comment after tag or branch to use in example'
+    default: 'replace with specific tag or commit'
 
 outputs:
   changes_detected:
     description: "Boolean if there were changes committed. Will be none if 'commit_and_push' was false."
     value: ${{ steps.push-new-data.outputs.changes_detected }}
+  commit_hash:
+    description: "Commit hash if new data has been committed. Will be none if 'commit_and_push' was false."
+    value: ${{ steps.push-new-data.outputs.commit_hash }}
 
 runs:
   using: "composite"
   steps:
 
     - name: Self warning
-      uses: ajparsons/sha-version-warning@53c5e9cbf96afb276cb2cf486ebd45c5d5db0e11 #v1.0.1
+      uses: ajparsons/sha-version-warning@53c5e9cbf96afb276cb2cf486ebd45c5d5db0e11 #v 1.0.1
       with: 
         action_path: ${{ github.action_path }}
 
@@ -43,6 +49,7 @@ runs:
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
         TAG: ${{ inputs.tag }}
+        COMMENT: ${{ inputs.tag }}
 
     - name: Remove double lines
       shell: python
