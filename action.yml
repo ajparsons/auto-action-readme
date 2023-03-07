@@ -49,7 +49,7 @@ runs:
       env:
         OUTPUT_FILE: ${{ inputs.output_file }}
         TAG: ${{ inputs.tag }}
-        COMMENT: ${{ inputs.tag }}
+        COMMENT: ${{ inputs.comment }}
 
     - name: Remove double lines
       shell: python
